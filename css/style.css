@@ -1,0 +1,87 @@
+.HN {
+    font-size: 24px;
+    color: #444;
+    font-style: italic;
+    line-height: 1.5;
+    text-align: center;
+}
+h1{
+    font-size: 30px !important;
+    margin-top: 15px;
+}
+body {
+    background-color: lightblue !important;
+}
+a {
+    color: #007bff;
+    text-decoration: none !important;
+}
+/* Стилі рівня документу для перевизначення стилю для посилань */
+body a:hover {
+    color: darkorchid !important;
+}
+#moba, #purpose{
+    color: purple;
+    font-weight: bold;
+}
+p {
+    font-size: 16px !important;
+    color: black;
+    text-align: left;
+    line-height: 1.4 !important;
+}
+
+/* Стилі для маркованих списків */
+ul {
+    list-style-type: circle;
+    font-size: 16px;
+    color: crimson;
+    margin-left: 20px;
+}
+/* Стилі для нумерованих списків */
+ol {
+    list-style-type: decimal;
+    font-size: 16px;
+    color: #333;
+    margin-left: 20px;
+}
+/* Стилі для визначень */
+dl {
+    font-size: 16px;
+    color: #2f39b4;
+}
+dt {
+    font-weight: bold;
+}
+dd {
+    margin-left: 20px;
+}
+/* Стилі для таблиць */
+table {
+    width: 90%; /* Ширина таблиці */
+    border-collapse: collapse; /* Злиття границь */
+    font-size: 16px;
+    color: #1a1a1a;
+}
+th, td {
+    border: 2px solid #000;
+    padding: 8px;
+}
+/* Стилі для заголовка таблиці */
+th {
+    background-color: paleturquoise;
+}
+/* Стилі для фону рядків таблиці */
+tr {
+    background-color: #eee;
+}
+/* Стилі для посилань в таблиці */
+table a {
+    color: blue;
+    text-decoration: underline;
+}
+#img_cell {
+    text-align: center !important;
+}
+
+
