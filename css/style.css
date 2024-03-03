@@ -10,25 +10,26 @@ h1{
     margin-top: 15px;
 }
 body {
-    background-color: lightblue !important;
+    background-color: lightblue;
 }
 a {
     color: #007bff;
-    text-decoration: none !important;
+    text-decoration: none;
 }
-/* Стилі рівня документу для перевизначення стилю для посилань */
+
 body a:hover {
-    color: darkorchid !important;
+    color: darkorchid
 }
+
 #moba, #purpose{
     color: purple;
     font-weight: bold;
 }
 p {
-    font-size: 16px !important;
+    font-size: 16px;
     color: black;
     text-align: left;
-    line-height: 1.4 !important;
+    line-height: 1.4;
 }
 
 /* Стилі для маркованих списків */
@@ -81,7 +82,7 @@ table a {
     text-decoration: underline;
 }
 #img_cell {
-    text-align: center !important;
+    text-align: center;
 }
 
 
