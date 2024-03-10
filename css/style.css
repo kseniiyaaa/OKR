@@ -6,7 +6,7 @@
     text-align: center;
 }
 h1{
-    font-size: 30px !important;
+    font-size: 30px;
     margin-top: 15px;
 }
 body {
@@ -85,4 +85,25 @@ table a {
     text-align: center;
 }
 
+/*lab 4*/
+/*сусідні селектори*/
+u+i{
+    color: yellow;
+}
+/*контекстні селектори*/
+p u{
+    color: mediumblue;
+}
 
+dl dd a{
+    color: magenta;
+    text-decoration: underline;
+}
+
+.shoottable a{
+    color: chartreuse;
+}
+/*дочірні селектори*/
+p>i{
+    font-weight: bold;
+}
