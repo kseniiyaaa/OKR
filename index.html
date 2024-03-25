@@ -22,7 +22,7 @@
 		<a href="moba.html">MOBA ігри</a> <a href="moba.html#moba"> (розшифровка)</a><br>
 		<a href="shooters.html">Шутери</a> <br>
 		<a href="simulators.html">Симулятори</a> <br>
-		<a href="https://store.steampowered.com">Онлайн-магазин ігр</a>
+		<a id="steamLink" href="#" onclick="redirectSteam()">Онлайн-магазин ігр</a>
 		<hr style="border-top: 1px dashed #000;">
 		<a href="http://surl.li/qrklh"><img
 				src="http://surl.li/qrklh"
@@ -31,23 +31,57 @@
 		     alt="videogames" height="400px" width="400px">
 
 
-
-		<div class="game-container float-left">
+		<div class="gameContainer float-left">
 			<div class="game-title">Call of Duty</div>
 			<div class="game-description">Екшн-шутер від першої особи</div>
 			<a href="https://uk.wikipedia.org/wiki/Call_of_Duty_(серія_відеоігор)">Детальніше</a>
 		</div>
 
-		<div class="game-container float-right">
+		<div class="gameContainer float-right">
 			<div class="game-title first-child">Minecraft</div>
 			<div class="game-description">Ігровий світ, де можна будувати все, що завгодно</div>
 			<a href="https://uk.wikipedia.org/wiki/Minecraft">Детальніше</a>
 		</div>
 
-		<div class="game-container">
+		<div class="gameContainer">
 			<div class="game-title">World of Warcraft</div>
 			<div class="game-description">Масивна мультиплеєрна онлайн гра у жанрі MMORPG</div>
 			<a href="https://uk.wikipedia.org/wiki/World_of_Warcraft">Детальніше</a>
 		</div>
+
+		<button onclick="userDialog()">Почати діалог</button>
+		<button onclick="redirectEpic()">Перенаправити на сторінку</button>
+		<button onclick="HNselect()">Змінити заголовки</button>
+		<button onclick="changeHTML()">Передбачення</button>
+
+		<div id="prediction">
+			<p>Тут буде твоє передбачення!</p>
+		</div>
+		<hr>
+		<div id="newTrends">
+			<h1>Популярні комп'ютерні ігри</h1>
+			<ul id="gamesList">
+				<li>Fortnite</li>
+				<li>League of Legends</li>
+				<li>Counter-Strike: Global Offensive</li>
+			</ul>
+		</div>
+
+		<button onclick="newRealise()">Новий реліз</button>
+		<button onclick="newGame()">Нова гра</button>
+		<button onclick="deleteGame()">Видалити гру</button>
+		<button onclick="changeGame()">Змінити гру</button>
+		<button onclick="addLink()">Додати посилання</button>
+
+		<script src="js/main.js"></script>
+
+	<script>
+		game = prompt("Яка ваша улюблена гра?")
+        alert(game)
+		confirm("Дякую!")
+        showDeveloperInfo("Антропова", "Ксенія");
+        compare()
+		changeBackground("cyan")
+	</script>
 	</body>
 </html>
