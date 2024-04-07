@@ -16,13 +16,23 @@
 				        геймінгу, незалежно від вашого досвіду та вподобань.</span> Занурюйтесь в захоплюючий світ
 			віртуальних пригод разом з нами!
 		</p>
+		<div id="menu">
+			<button data-action="gameOfWeek">Гра тижня</button>
+			<button data-action="greatPrice">Вигідна знижка</button>
+			<button data-action="changeBackground">Змінити фон</button>
+		</div>
 		<hr>
-		<h2 class="HN">Навігація</h2>
-		<a href="index.html#purpose">Призначення</a> <br>
-		<a href="moba.html">MOBA ігри</a> <a href="moba.html#moba"> (розшифровка)</a><br>
-		<a href="shooters.html">Шутери</a> <br>
-		<a href="simulators.html">Симулятори</a> <br>
-		<a id="steamLink" href="#" onclick="redirectSteam()">Онлайн-магазин ігр</a>
+		<button data-toggle-id="navigation">
+			Показати навігаційне меню
+		</button>
+		<div id="navigation" hidden>
+			<h2 class="HN">Навігація</h2>
+			<a href="index.html#purpose">Призначення</a> <br>
+			<a href="moba.html">MOBA ігри</a> <a href="moba.html#moba"> (розшифровка)</a><br>
+			<a href="shooters.html">Шутери</a> <br>
+			<a href="simulators.html">Симулятори</a> <br>
+			<a id="steamLink" href="#" onclick="redirectSteam()">Онлайн-магазин ігр</a>
+		</div>
 		<hr style="border-top: 1px dashed #000;">
 		<a href="http://surl.li/qrklh"><img
 				src="http://surl.li/qrklh"
@@ -49,10 +59,10 @@
 			<a href="https://uk.wikipedia.org/wiki/World_of_Warcraft">Детальніше</a>
 		</div>
 
-		<button onclick="userDialog()">Почати діалог</button>
-		<button onclick="redirectEpic()">Перенаправити на сторінку</button>
-		<button onclick="HNselect()">Змінити заголовки</button>
-		<button onclick="changeHTML()">Передбачення</button>
+		<button id="dialogButton">Почати діалог</button>
+		<button id="redirectEpic">Перенаправити на сторінку</button>
+		<button id="HNselect">Змінити заголовки</button>
+		<button id="predictionButton">Передбачення</button>
 
 		<div id="prediction">
 			<p>Тут буде твоє передбачення!</p>
@@ -72,16 +82,41 @@
 		<button onclick="deleteGame()">Видалити гру</button>
 		<button onclick="changeGame()">Змінити гру</button>
 		<button onclick="addLink()">Додати посилання</button>
-
 		<script src="js/main.js"></script>
-
 	<script>
-		game = prompt("Яка ваша улюблена гра?")
-        alert(game)
-		confirm("Дякую!")
-        showDeveloperInfo("Антропова", "Ксенія");
-        compare()
-		changeBackground("cyan")
+		// lab 7
+		// додавання функції-обробника через атрибут
+        document.getElementById("dialogButton").addEventListener("click", userDialog);
+        // додавання функції-обробника через властивість
+		var changeHtmlButton = document.getElementById("predictionButton")
+		changeHtmlButton.onclick = changeHTML;
+        // addEventListener
+		var changeTitles = document.getElementById("HNselect")
+		changeTitles.addEventListener('click', firstClick)
+        changeTitles.addEventListener('click', secondClick)
+		// handleEvent
+		var redirectButton = document.getElementById("redirectEpic")
+		redirectButton.addEventListener("click", handleEvent)
+		// removeEventListener
+        redirectButton.removeEventListener("click", handleEvent);
+        // data*
+        var menu = document.getElementById("menu");
+        menu.addEventListener("click", menuHandler);
+		// behavior
+        document.addEventListener('click', function(event) {
+            let id = event.target.dataset.toggleId;
+            if (!id) return;
+            let elem = document.getElementById(id);
+            elem.hidden = !elem.hidden;
+        });
+
+        // lab 6
+		// game = prompt("Яка ваша улюблена гра?")
+        // alert(game)
+		// confirm("Дякую!")
+        // showDeveloperInfo("Антропова", "Ксенія");
+        // compare()
+		// changeBackground("cyan")
 	</script>
 	</body>
 </html>
