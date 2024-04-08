@@ -101,7 +101,6 @@ table a {
 .game-description {
     color: #666;
 }
-
 /* Стилі для плаваючих елементів */
 .float-left {
     float: left;
@@ -112,7 +111,6 @@ table a {
     float: right;
     margin-left: 10px;
 }
-
 /* Псевдокласи для посилань */
 a:link {
     color: blue;
@@ -130,13 +128,10 @@ a:hover {
 a:active {
     color: green;
 }
-
 /* Псевдоклас :first-child */
 .first-child:first-child {
     background-color: lightgreen;
 }
-
-
 /* Псевдоелементи :before та :after */
 .game-container:before {
     content: '---';

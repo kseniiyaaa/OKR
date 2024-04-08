@@ -1,4 +1,5 @@
 // dialog
+
 function userDialog() {
     let userName = prompt("Введіть ваше ім'я:");
 
@@ -130,4 +131,55 @@ function addLink() {
     steamLink.href = "https://store.steampowered.com/";
     steamLink.textContent = "Перейти на Steam";
     gamesList.after(steamLink);
+}
+
+//LAB 7
+function firstClick() {
+    let gameContainers = document.querySelectorAll('.HN');
+    // Проходимо по кожному знайденому елементу і змінюємо його текст
+    gameContainers.forEach(function(HN) {
+        HN.textContent = "FIRST"
+    })
+}
+
+function secondClick(event) {
+    let gameContainers = document.querySelectorAll('.HN');
+    // Проходимо по кожному знайденому елементу і змінюємо його текст
+    setTimeout(function() {
+    gameContainers.forEach(function(HN) {
+        HN.textContent = "SECOND"
+    })},3000);
+}
+function handleEvent(event) {
+    alert("Елемент на якому спрацював EventListener: " + event.currentTarget)
+    redirectEpic();
+}
+
+function menuHandler(event) {
+    if (event.target.tagName === "BUTTON") {
+        let action = event.target.dataset.action;
+
+        // Викликаємо відповідний метод в залежності від значення data-action
+        switch (action) {
+            case "gameOfWeek":
+                game()
+                break;
+            case "greatPrice":
+                greatPrice();
+                break;
+            case "changeBackground":
+                changeBackground('plum');
+                break;
+            default:
+                alert("Невідома дія");
+        }
+    }
+}
+
+function game() {
+    alert("Гра тижня: Content Warning")
+}
+
+function greatPrice() {
+    alert("Phasmophobia\nБільше знижок: https://store.steampowered.com/specials#tab=TopSellers")
 }

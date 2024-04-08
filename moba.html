@@ -4,6 +4,11 @@
 	<meta charset="UTF-8">
 	<title>MOBA</title>
 	<link rel="stylesheet" href="css/style.css">
+	<style>
+        .highlight {
+            background-color: yellow;
+        }
+	</style>
 </head>
 <body>
 <h1 class="HN">MOBA</h1>
@@ -16,7 +21,7 @@
 	команд можуть розвиватися, збільшуючи свої характеристики, отримувати нові здібності і спорядження, подібно до
 	рольових відеоігор.
 </p>
-<ul>
+<ul id="mobaList">
 	<li>DotA</li>
 	<li>Heroes of Newerth</li>
 	<li>League of Legends</li>
@@ -28,6 +33,20 @@
 <div>
 	<iframe src="https://uk.wikipedia.org/wiki/Dota_2" width="800" height="500"></iframe>
 </div>
-
+	<script src="js/main.js"></script>
+	<script>
+	    var list = document.getElementById("mobaList");
+	    list.addEventListener("click", function(event) {
+	        if (event.target.tagName === "LI") {
+	            // Видаляємо клас highlight з усіх елементів списку
+	            var items = list.getElementsByTagName("li");
+	            for (var i = 0; i < items.length; i++) {
+	                items[i].classList.remove("highlight");
+	            }
+	            // Додаємо клас highlight до клікнутого елемента
+	            event.target.classList.add("highlight");
+	        }
+	    });
+	</script>
 </body>
 </html>
