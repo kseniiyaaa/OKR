@@ -6,6 +6,21 @@
 		<meta name="author" content="Kseniia Antropova IA-21">
 		<title>Home</title>
 		<link rel="stylesheet" href="css/style.css">
+		<style>
+            /* Стилі для елементів */
+            .element {
+                background-color: lightblue;
+                margin: 10px;
+                transition: background-color 0.3s ease-in-out;
+            }
+            /* Стилі для перетягування */
+            .draggable {
+                background-color: lightblue;
+                padding: 10px;
+	            position: absolute;
+                cursor: move;
+            }
+		</style>
 	</head>
 	<body>
 		<h1 class="HN">Main</h1>
@@ -34,26 +49,26 @@
 			<a id="steamLink" href="#" onclick="redirectSteam()">Онлайн-магазин ігр</a>
 		</div>
 		<hr style="border-top: 1px dashed #000;">
+		<img id="draggable" class="draggable" src="http://surl.li/qrklh"
+		     alt="videogames" height="100px" width="100px">
 		<a href="http://surl.li/qrklh"><img
 				src="http://surl.li/qrklh"
-				alt="videogames" height="100px" width="100px"></a>
-		<img src="http://surl.li/qrklh"
-		     alt="videogames" height="400px" width="400px">
+				alt="videogames" height="400px" width="400px"></a>
 
 
-		<div class="gameContainer float-left">
+		<div class="gameContainer float-left element">
 			<div class="game-title">Call of Duty</div>
 			<div class="game-description">Екшн-шутер від першої особи</div>
 			<a href="https://uk.wikipedia.org/wiki/Call_of_Duty_(серія_відеоігор)">Детальніше</a>
 		</div>
 
-		<div class="gameContainer float-right">
+		<div class="gameContainer float-right element">
 			<div class="game-title first-child">Minecraft</div>
 			<div class="game-description">Ігровий світ, де можна будувати все, що завгодно</div>
 			<a href="https://uk.wikipedia.org/wiki/Minecraft">Детальніше</a>
 		</div>
 
-		<div class="gameContainer">
+		<div class="gameContainer element">
 			<div class="game-title">World of Warcraft</div>
 			<div class="game-description">Масивна мультиплеєрна онлайн гра у жанрі MMORPG</div>
 			<a href="https://uk.wikipedia.org/wiki/World_of_Warcraft">Детальніше</a>
@@ -82,33 +97,80 @@
 		<button onclick="deleteGame()">Видалити гру</button>
 		<button onclick="changeGame()">Змінити гру</button>
 		<button onclick="addLink()">Додати посилання</button>
+
 		<script src="js/main.js"></script>
 	<script>
-		// lab 7
-		// додавання функції-обробника через атрибут
-        document.getElementById("dialogButton").addEventListener("click", userDialog);
-        // додавання функції-обробника через властивість
-		var changeHtmlButton = document.getElementById("predictionButton")
-		changeHtmlButton.onclick = changeHTML;
-        // addEventListener
-		var changeTitles = document.getElementById("HNselect")
-		changeTitles.addEventListener('click', firstClick)
-        changeTitles.addEventListener('click', secondClick)
-		// handleEvent
-		var redirectButton = document.getElementById("redirectEpic")
-		redirectButton.addEventListener("click", handleEvent)
-		// removeEventListener
-        redirectButton.removeEventListener("click", handleEvent);
-        // data*
-        var menu = document.getElementById("menu");
-        menu.addEventListener("click", menuHandler);
-		// behavior
-        document.addEventListener('click', function(event) {
-            let id = event.target.dataset.toggleId;
-            if (!id) return;
-            let elem = document.getElementById(id);
-            elem.hidden = !elem.hidden;
+		//lab8
+        var elements = document.querySelectorAll(".element");
+        elements.forEach(function(element) {
+            // Обробник для наведення миші
+            element.addEventListener("mouseover", function(event) {
+                event.target.style.backgroundColor = "hotpink";
+            });
+            // Обробник для відведення миші
+            element.addEventListener("mouseout", function(event) {
+                event.target.style.backgroundColor = "lightblue";
+            });
         });
+        // посилання на перетягуваний елемент
+        var draggable = document.getElementById("draggable");
+        // Початкові координати курсора при натисканні на елемент
+        var offsetX, offsetY;
+        // Початкові координати елемента в момент початку перетягування
+        var initialLeft, initialTop;
+        function startDragging(event) {
+            // Зберігаємо початкові координати курсора
+            offsetX = event.clientX;
+            offsetY = event.clientY;
+            // Зберігаємо початкові координати елемента
+            initialLeft = draggable.offsetLeft;
+            initialTop = draggable.offsetTop;
+            // обробник події для переміщення елемента
+            document.addEventListener("mousemove", drag);
+            // Заборона браузеру вибирати текст під час перетягування
+            event.preventDefault();
+        }
+        function drag(event) {
+            // Визначаємо нові координати для елемента
+            var newLeft = initialLeft + (event.clientX - offsetX);
+            var newTop = initialTop + (event.clientY - offsetY);
+            // Встановлюємо нові координати для елемента
+            draggable.style.left = newLeft + "px";
+            draggable.style.top = newTop + "px";
+        }
+        function stopDragging(event) {
+            // Видаляємо обробник події для переміщення елемента
+            document.removeEventListener("mousemove", drag);
+        }
+        // обробники подій для початку та завершення перетягування
+        draggable.addEventListener("mousedown", startDragging);
+        document.addEventListener("mouseup", stopDragging);
+
+		// // lab 7
+		// // додавання функції-обробника через атрибут
+        // document.getElementById("dialogButton").addEventListener("click", userDialog);
+        // // додавання функції-обробника через властивість
+		// var changeHtmlButton = document.getElementById("predictionButton")
+		// changeHtmlButton.onclick = changeHTML;
+        // // addEventListener
+		// var changeTitles = document.getElementById("HNselect")
+		// changeTitles.addEventListener('click', firstClick)
+        // changeTitles.addEventListener('click', secondClick)
+		// // handleEvent
+		// var redirectButton = document.getElementById("redirectEpic")
+		// redirectButton.addEventListener("click", handleEvent)
+		// // removeEventListener
+        // redirectButton.removeEventListener("click", handleEvent);
+        // // data*
+        // var menu = document.getElementById("menu");
+        // menu.addEventListener("click", menuHandler);
+		// // behavior
+        // document.addEventListener('click', function(event) {
+        //     let id = event.target.dataset.toggleId;
+        //     if (!id) return;
+        //     let elem = document.getElementById(id);
+        //     elem.hidden = !elem.hidden;
+        // });
 
         // lab 6
 		// game = prompt("Яка ваша улюблена гра?")

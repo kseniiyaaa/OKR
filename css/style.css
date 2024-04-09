@@ -129,9 +129,9 @@ a:active {
     color: green;
 }
 /* Псевдоклас :first-child */
-.first-child:first-child {
-    background-color: lightgreen;
-}
+/*.first-child:first-child {*/
+/*    background-color: lightgreen;*/
+/*}*/
 /* Псевдоелементи :before та :after */
 .game-container:before {
     content: '---';
